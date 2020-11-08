@@ -1,0 +1,11 @@
+name: 'scala-steward latest'
+description: 'run latest scala-steward'
+inputs:
+  github-token:
+    description: 'github token'
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - run: ${{ github.action_path }}/main.sh ${{inputs.github-token}}
+      shell: bash
