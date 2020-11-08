@@ -2,6 +2,11 @@
 
 set -eux
 
+args=$1
+
+echo ${args[@]}
+echo ${!args[@]}
+
 git clone https://github.com/scala-steward-org/scala-steward.git
 
 cd scala-steward
@@ -11,7 +16,7 @@ git checkout 2b373382d7dca51987780cb5bbab466305e0a645
 
 mkdir modules/core/.jvm
 
-echo "echo $1" > modules/core/.jvm/github_token.sh
+echo "echo ${args["github-token"]}" > modules/core/.jvm/github_token.sh
 
 chmod +x modules/core/.jvm/github_token.sh
 

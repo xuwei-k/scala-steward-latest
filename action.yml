@@ -4,8 +4,16 @@ inputs:
   github-token:
     description: 'github token'
     required: true
+  steward-version:
+    required: false
+    default: 2b373382d7dca51987780cb5bbab466305e0a645
 runs:
   using: "composite"
   steps:
-    - run: ${{ github.action_path }}/main.sh ${{inputs.github-token}}
+    - run: |
+        declare -A args=(
+          ["github-token"]="${{inputs.github-token}}"
+          ["steward-version"]="${{inputs.steward-version}}"
+        )
+        ${{ github.action_path }}/main.sh args
       shell: bash
