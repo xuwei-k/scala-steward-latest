@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -eux
+set -ex
 
 git clone https://github.com/scala-steward-org/scala-steward.git
 
